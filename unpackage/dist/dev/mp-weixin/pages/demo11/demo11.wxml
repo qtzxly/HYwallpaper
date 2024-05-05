@@ -1,1 +1,0 @@
-<view class=""> 1212 <input type="text" placeholder="input" value="{{a}}" bindinput="{{b}}"/><input type="text" placeholder="input" value="{{c}}" bindinput="{{d}}"/></view>

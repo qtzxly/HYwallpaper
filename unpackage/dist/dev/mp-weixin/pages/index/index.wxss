@@ -23,20 +23,105 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.box {
-  width: 200px;
-  height: 200px;
-  background: #ccc;
+.homeLayout .banner {
+  width: 750rpx;
+  padding: 30rpx 0;
 }
-.boxHover {
-  background: orange;
-  width: 300px;
+.homeLayout .banner swiper {
+  width: 750rpx;
+  height: 340rpx;
 }
-.inner {
-  width: 150px;
-  height: 150px;
-  background: green;
+.homeLayout .banner swiper-item {
+  width: 100%;
+  height: 100%;
+  padding: 0 30rpx;
 }
-.innerHover {
-  background: pink;
+.homeLayout .banner swiper-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.homeLayout .notice {
+  display: flex;
+  width: 690rpx;
+  height: 80rpx;
+  background: #f9f9f9;
+  margin: 0 auto;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+}
+.homeLayout .notice .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140rpx;
+}
+.homeLayout .notice .left .text {
+  color: #28b389;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.homeLayout .notice .center {
+  flex: 1;
+}
+.homeLayout .notice .center swiper {
+  height: 100%;
+}
+.homeLayout .notice .center swiper-item {
+  height: 100%;
+  font-size: 30rpx;
+  color: #666;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.homeLayout .notice .right {
+  width: 70rpx;
+}
+.homeLayout .select {
+  padding-top: 50rpx;
+}
+.homeLayout .select .date {
+  color: #28b389;
+  display: flex;
+  align-items: center;
+}
+.homeLayout .select .date .text {
+  margin-left: 5rpx;
+}
+.homeLayout .select .content {
+  width: 720rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.homeLayout .select .content scroll-view {
+  white-space: nowrap;
+}
+.homeLayout .select .content scroll-view .box {
+  width: 200rpx;
+  height: 430rpx;
+  display: inline-block;
+  margin-right: 15rpx;
+}
+.homeLayout .select .content scroll-view .box image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.homeLayout .select .content scroll-view .box:last-child {
+  margin-right: 30rpx;
+}
+.homeLayout .theme {
+  padding: 50rpx 0;
+}
+.homeLayout .theme .more {
+  font-size: 32rpx;
+  color: #888;
+}
+.homeLayout .theme .content {
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+  display: grid;
+  gap: 15rpx;
+  grid-template-columns: repeat(3, 1fr);
 }
