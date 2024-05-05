@@ -6,8 +6,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "浩阳壁纸",
+    "navigationBarBackgroundColor": "#FFF",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {

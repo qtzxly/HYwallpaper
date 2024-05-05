@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "推荐"
 			}
 		}
 
@@ -25,13 +25,13 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTitleText": "浩阳壁纸",
+		"navigationBarBackgroundColor": "#FFF",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
 		"color": "#9799a5",
-		"selectedColor": "#28b389",
+		"selectedColor": "$brand-theme-color",
 		"list": [
 			{
 				"text": "推荐",
