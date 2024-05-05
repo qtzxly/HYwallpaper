@@ -1,2 +1,5 @@
 unpackage/
-uni_modules/
+node_modules/
+
+.project
+.Ds_Store
