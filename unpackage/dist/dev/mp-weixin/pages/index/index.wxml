@@ -1,0 +1,1 @@
+<view class="box" hover-class="boxHover"><view class="inner" hover-class="innerHover" hover-stop-propagation="">内部元素</view></view><text selectable="true" space="nbsp">dddd - aaaa</text>
