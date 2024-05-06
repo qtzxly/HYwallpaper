@@ -1,28 +1,39 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "推荐"
+				"navigationBarTitleText": "推荐",
+				"navigationStyle": "custom"
 			}
-		}
-
-		, {
+		},
+		{
 			"path": "pages/classify/classify",
 			"style": {
 				"navigationBarTitleText": "分类",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
-
-		}, {
+		},
+		{
 			"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
-
 		}
-	],
+	    ,{
+            "path" : "pages/classlist/classlist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "分类列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "浩阳壁纸",
@@ -32,8 +43,7 @@
 	"tabBar": {
 		"color": "#9799a5",
 		"selectedColor": "$brand-theme-color",
-		"list": [
-			{
+		"list": [{
 				"text": "推荐",
 				"pagePath": "pages/index/index",
 				"iconPath": "static/tabBar/home.png",

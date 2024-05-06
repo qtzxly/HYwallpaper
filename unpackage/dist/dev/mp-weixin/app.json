@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/classify/classify",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/classlist/classlist"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -12,7 +13,7 @@
   },
   "tabBar": {
     "color": "#9799a5",
-    "selectedColor": "#28b389",
+    "selectedColor": "$brand-theme-color",
     "list": [
       {
         "text": "推荐",

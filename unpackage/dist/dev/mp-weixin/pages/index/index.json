@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "推荐",
+  "navigationStyle": "custom",
   "usingComponents": {
     "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons",
     "uni-dateformat": "../../uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat",

@@ -13,6 +13,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/classlist/classlist",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

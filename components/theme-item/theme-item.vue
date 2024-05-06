@@ -1,12 +1,13 @@
 <template>
 	<view class="themeItem">
-		<navigator v-if="!isMore" url="" class="box">
+		<navigator v-if="!isMore" url="/pages/classlist/classlist" class="box">
 			<image class="pic" src="../../common/images/classify1.jpg" mode="aspectFill"></image>
 			<view class="mask">明星美女</view>
 			<view class="tab">3天前更新</view>
 		</navigator>
 		
-		<navigator v-if="isMore" url="" class="box more">
+		<!-- 跳转tabBar需要设置open-type -->
+		<navigator v-if="isMore" url="/pages/classify/classify" open-type="reLaunch" class="box more">
 			<image class="pic" src="../../common/images/more.jpg" mode="aspectFill"></image>
 			<view class="mask">
 				<uni-icons type="more-filled" size="34" color="#fff"></uni-icons>

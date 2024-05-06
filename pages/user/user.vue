@@ -11,7 +11,7 @@
 
 		<view class="section">
 			<view class="list">
-				<view class="row">
+				<navigator class="row" url="/pages/classlist/classlist">
 					<view class="left">
 						<uni-icons type="download-filled" size="20" ></uni-icons>
 						<view class="text">我的下载</view>
@@ -20,9 +20,9 @@
 						<view class="text">333</view>
 						<uni-icons type="right" size="20" color="#aaa"></uni-icons>
 					</view>
-				</view>
+				</navigator>
 
-				<view class="row">
+				<navigator class="row" url="/pages/classlist/classlist">
 					<view class="left">
 						<uni-icons type="download-filled" size="20" ></uni-icons>
 						<view class="text">我的评分</view>
@@ -31,7 +31,7 @@
 						<view class="text">2</view>
 						<uni-icons type="right" size="20" color="#aaa"></uni-icons>
 					</view>
-				</view>
+				</navigator>
 
 			</view>
 		</view>
