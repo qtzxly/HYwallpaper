@@ -94,6 +94,11 @@
 
 <style lang="scss" scoped>
 	.userLayout {
+		:deep(){
+			.uni-icons{
+				color: $brand-theme-color !important;
+			}
+		}
 		.userInfo {
 			display: flex;
 			align-items: center;

@@ -70,6 +70,11 @@
 
 <style lang="scss">
 	.homeLayout {
+		:deep(){
+			.uni-icons{
+				color: $brand-theme-color !important;
+			}
+		}
 		.banner {
 			width: 750rpx;
 			padding: 30rpx 0;

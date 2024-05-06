@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/classify/classify",
     "pages/user/user",
-    "pages/classlist/classlist"
+    "pages/classlist/classlist",
+    "pages/preview/preview"
   ],
   "window": {
     "navigationBarTextStyle": "black",

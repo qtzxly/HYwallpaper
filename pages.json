@@ -33,6 +33,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/preview/preview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "预览",
+                "enablePullDownRefresh": false,
+								"navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

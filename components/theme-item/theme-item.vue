@@ -29,6 +29,11 @@
 
 <style lang="scss">
 	.themeItem{
+		:deep(){
+			.uni-icons{
+				color: $brand-theme-color !important;
+			}
+		}
 		.box{
 			height: 340rpx;
 			border-radius: 10rpx;
