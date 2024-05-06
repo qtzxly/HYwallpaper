@@ -7,7 +7,10 @@
 		</swiper>
 		
 		<view v-show="maskState" class="mask">
-			<view class="goBack"></view>
+			<view class="goBack" :style="{top:getStstusBarHeight() + 'px'}"
+			@click="goBack"> 
+				<uni-icons type="back" size="20" color="#eee"></uni-icons>
+			</view>
 			<view class="count">3 / 9</view>
 			<view class="time">
 				<uni-dateformat :date="new Date()" format="hh:mm" />
@@ -21,7 +24,7 @@
 					<view class="text">信息</view>
 				</view>
 				
-				<view class="box">
+				<view class="box" @click="clickScore">
 					<uni-icons type="star" size="23"></uni-icons>
 					<view class="text">5分</view>
 				</view>
@@ -89,16 +92,60 @@
 				</scroll-view>
 			</view>
 		</uni-popup>
+		
+		<uni-popup ref="scorePopup" :is-mask-click="false">
+			<view class="scorePopup">
+				<view class="popHeader">
+					<view ></view>
+					<view class="title">壁纸评分</view>
+					<view class="close" @click="clickScoreClose">
+						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+					</view>
+				</view>
+				
+				<view class="content">
+					<uni-rate v-model="userScore" allow-half></uni-rate>
+					<text class="text">{{userScore}}分</text>
+				</view>
+				
+				<view class="footer">
+					<button 
+					:disabled="!userScore" type="default" size="mini" plain @click="submitScore">
+					确认评分</button>
+				</view>
+				
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
 <script setup>
 	import { ref } from "vue";
+	import {getStstusBarHeight} from '@/utils/system.js'
+	console.log('getStstusBarHeight',getStstusBarHeight());	
+	
+	const userScore = ref(0)
+	
+	const goBack=()=>{
+		uni.navigateBack()
+	}
 
 	// 遮罩
 	const maskState = ref(true)
 	const maskChange = () => {
 		maskState.value = !maskState.value
+	}
+	
+	// 评分弹窗
+	const scorePopup= ref(null)
+	const	clickScore = ()=>{
+		scorePopup.value.open()
+	}
+	const clickScoreClose=()=>{
+		scorePopup.value.close()
+	}
+	const submitScore=()=>{
+		console.log(1231);
 	}
 	
 	// 操作infoPopup
@@ -113,11 +160,6 @@
 
 <style lang="scss" scoped>
 .preview{
-	// :deep(){
-	// 	.uni-icons{
-	// 		color: #000 !important;
-	// 	}
-	// }
 	position: relative;
 	height: 100vh;
 	width: 100%;
@@ -139,7 +181,18 @@
 			color: #FFF;
 		}
 		.goBack{
-			
+			width: 38px;
+			height: 38px;
+			background: rgba(0, 0, 0, 0.5);
+			left: 30rpx;
+			margin-left: 0;
+			border-radius: 100px;
+			top: 0;
+			backdrop-filter: blur(10rpx);
+			border: 1rpx solid rgba(255, 255, 255, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		.count{
 			top: 10vh;
@@ -193,6 +246,19 @@
 		}
 	}
 
+	.popHeader{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.title{
+			color: #555;
+			font-size: 32rpx;
+		}
+		.close{
+			padding: 6rpx;
+		}
+	}
+	
 	.infoPopup{
 		
 		background: rgba(255, 255, 255, 0.8);
@@ -202,18 +268,7 @@
 		padding: 30rpx;
 		border-radius: 30rpx 30rpx 0 0;
 		overflow: hidden;
-		.popHeader{
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			.title{
-				color: #555;
-				font-size: 32rpx;
-			}
-			.close{
-				padding: 6rpx;
-			}
-		}
+		
 		scroll-view{
 			max-height: 60vh;
 			.content{
@@ -267,6 +322,36 @@
 					line-height: 1.5em;
 				}
 			}
+		}
+	}
+
+	.scorePopup{
+		// background: #ddd;
+		// background: rgba(222, 222, 222, 0.95);
+		background: rgb(222, 222, 222);
+		box-shadow: 0 2rpx 0 rgba(0,0,0,0.1);
+		// backdrop-filter: blur(20rpx);
+		
+		padding: 30rpx;
+		width: 70vw;
+		border-radius: 30rpx;
+		.content{
+			padding: 30rpx 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.text{
+				color: #ffca3e;
+				padding-left: 10rpx;
+				width: 80rpx;
+				line-height: 1em;
+				text-align: right;
+			}
+		}
+		.footer{
+			padding: 10rpx 0;
+			display: flex;
+			align-items: center;
 		}
 	}
 }

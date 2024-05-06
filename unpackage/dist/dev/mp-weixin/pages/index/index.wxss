@@ -23,6 +23,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.homeLayout  .uni-icons {
+  color: #28b389 !important;
+}
 .homeLayout .banner {
   width: 750rpx;
   padding: 30rpx 0;
@@ -43,11 +46,11 @@
 }
 .homeLayout .notice {
   display: flex;
-  width: 690rpx;
+  width: 700rpx;
   height: 80rpx;
   background: #f9f9f9;
   margin: 0 auto;
-  border-radius: 40rpx;
+  border-radius: 20rpx;
   line-height: 80rpx;
 }
 .homeLayout .notice .left {
@@ -76,7 +79,7 @@
   text-overflow: ellipsis;
 }
 .homeLayout .notice .right {
-  width: 70rpx;
+  width: 50rpx;
 }
 .homeLayout .select {
   padding-top: 50rpx;

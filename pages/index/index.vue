@@ -1,5 +1,7 @@
 <template>
 	<view class="homeLayout pageBg">
+		
+		<custom-nav-bar title="推荐"></custom-nav-bar>
 
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#FFF" autoplay circular>
@@ -15,8 +17,14 @@
 				<text class="text">公告</text>
 			</view>
 			<view class="center">
-				<swiper vertical autoplay interval="2000" duration="500" circular>
-					<swiper-item v-for="item in 4">aaaaaadasdaaaaaaaaaaaaafffffffaa</swiper-item>
+				<swiper vertical autoplay interval="3000" duration="600" circular>
+					<swiper-item >
+						<navigator url="/pages/notice/detail">欢迎关注“浩阳说”公众号</navigator>
+					</swiper-item>
+					<swiper-item >
+						<navigator url="/pages/notice/detail">欢迎投稿至:354369716@qq.com</navigator>
+					</swiper-item>
+					<swiper-item >今日更新</swiper-item>
 				</swiper>
 			</view>
 			<view class="right">
@@ -39,8 +47,9 @@
 
 			<view class="content">
 				<scroll-view scroll-x="">
-					<view class="box" v-for="item in 8">
-						<image src="../../common/images/preview_small.webp" mode="aspectFill"></image>
+					<view class="box" v-for="item in 8" @click="goPreview">
+						<image src="../../common/images/preview_small.webp" mode="aspectFill">
+						</image>
 					</view>
 				</scroll-view>
 			</view>
@@ -65,6 +74,11 @@
 </template>
 
 <script setup>
+	const goPreview =() =>{
+		uni.navigateTo({
+			url:'/pages/preview/preview'
+		})
+	}
 
 </script>
 
@@ -99,11 +113,11 @@
 
 		.notice {  
 			display: flex;
-			width: 690rpx;
+			width: 700rpx;
 			height: 80rpx;
 			background: #f9f9f9;
 			margin: 0 auto;
-			border-radius: 40rpx;
+			border-radius: 20rpx;
 			line-height: 80rpx;
 
 			.left {
@@ -118,13 +132,10 @@
 					font-size: 28rpx;
 				}
 			}
-
 			.center {
 				flex: 1;
-
 				swiper {
 					height: 100%;
-
 					&-item {
 						height: 100%;
 						font-size: 30rpx;
@@ -138,10 +149,7 @@
 			}
 
 			.right {
-				// display: flex;
-				// justify-content: center;
-				// align-items: center;
-				width: 70rpx;
+				width: 50rpx;
 			}
 
 		}
