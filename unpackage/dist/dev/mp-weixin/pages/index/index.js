@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const common_assets = require("../../common/assets.js");
+const api_apis = require("../../api/apis.js");
+require("../../utils/request.js");
 if (!Array) {
   const _easycom_custom_nav_bar2 = common_vendor.resolveComponent("custom-nav-bar");
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
@@ -25,42 +26,76 @@ const _sfc_main = {
         url: "/pages/preview/preview"
       });
     };
+    const bannerList = common_vendor.ref([]);
+    const randomList = common_vendor.ref([]);
+    const classifyList = common_vendor.ref([]);
+    const getBanner = async () => {
+      let res = await api_apis.apiGetBanner();
+      bannerList.value = res.data;
+    };
+    getBanner();
+    const getDayRandom = async () => {
+      let res = await api_apis.apiGetDayRandom();
+      randomList.value = res.data;
+    };
+    getDayRandom();
+    const getClassify = async () => {
+      let res = await api_apis.apiGetClassify({ select: true });
+      classifyList.value = res.data;
+    };
+    getClassify();
+    const noticeList = common_vendor.ref([]);
+    const getNotice = async () => {
+      let res = await api_apis.apiNoticeList({
+        pageSize: 5
+      });
+      noticeList.value = res.data;
+    };
+    getNotice();
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
           title: "推荐"
         }),
-        b: common_vendor.f(3, (item, k0, i0) => {
-          return {};
+        b: common_vendor.f(bannerList.value, (item, k0, i0) => {
+          return {
+            a: item.picurl,
+            b: item._id
+          };
         }),
-        c: common_assets._imports_0,
-        d: common_vendor.p({
+        c: common_vendor.p({
           type: "sound-filled",
           size: "20"
         }),
-        e: common_vendor.p({
+        d: common_vendor.p({
           type: "right",
           size: "16"
         }),
-        f: common_vendor.p({
+        e: common_vendor.p({
           type: "calendar",
           size: "18"
         }),
-        g: common_vendor.p({
+        f: common_vendor.p({
           date: Date.now(),
           format: "dd日"
         }),
-        h: common_vendor.f(8, (item, k0, i0) => {
-          return {};
-        }),
-        i: common_assets._imports_1,
-        j: common_vendor.o(goPreview),
-        k: common_vendor.f(8, (item, k0, i0) => {
+        g: common_vendor.f(randomList.value, (item, k0, i0) => {
           return {
-            a: "6c923a67-7-" + i0
+            a: item.smallPicurl,
+            b: item._id,
+            c: common_vendor.o(goPreview, item._id)
           };
         }),
-        l: common_vendor.p({
+        h: common_vendor.f(classifyList.value, (item, k0, i0) => {
+          return {
+            a: item._id,
+            b: "6c923a67-7-" + i0,
+            c: common_vendor.p({
+              item
+            })
+          };
+        }),
+        i: common_vendor.p({
           isMore: true
         })
       };

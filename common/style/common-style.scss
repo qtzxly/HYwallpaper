@@ -9,8 +9,10 @@ view, swiper, swiper-item{
 	min-height: 80vh;
 }
 	
-// :deep(){
-// 	.uni-icons{
-// 		color: $brand-theme-color !important;
-// 	}
-// }
+.loadingLayout{
+	padding: 30rpx 0;
+}
+
+.safe-area-inset-bottom{
+	height: env(safe-area-inset-bottom);
+}

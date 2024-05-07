@@ -1,8 +1,8 @@
 <template>
 	<view class="preview">
 		<swiper circular=""> 
-			<swiper-item v-for="item in 4">
-				<image @click="maskChange" src="../../common/images/preview1.jpg" mode="aspectFill"></image>
+			<swiper-item v-for="item in classList" :key="item._id">
+				<image @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 		
@@ -122,7 +122,19 @@
 <script setup>
 	import { ref } from "vue";
 	import {getStstusBarHeight} from '@/utils/system.js'
-	console.log('getStstusBarHeight',getStstusBarHeight());	
+	
+	// console.log('getStstusBarHeight',getStstusBarHeight());	
+	const classList = ref([])
+	const storgClassList = uni.getStorageSync('storgClassList')||[]
+	console.log('storgClassList',storgClassList);
+	classList.value = storgClassList.map(item=>{
+		return{
+			...item,
+			picurl:item.smallPicurl.replace('_small.webp','.jpg')
+		}
+	})
+	console.log(classList.value);
+	
 	
 	const userScore = ref(0)
 	

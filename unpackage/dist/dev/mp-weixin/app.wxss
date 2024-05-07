@@ -30,4 +30,10 @@ view, swiper, swiper-item {
 .pageBg {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #fff 500rpx), linear-gradient(to right, #f4e2d8 20%, #beecb8);
   min-height: 80vh;
+}
+.loadingLayout {
+  padding: 30rpx 0;
+}
+.safe-area-inset-bottom {
+  height: env(safe-area-inset-bottom);
 }page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

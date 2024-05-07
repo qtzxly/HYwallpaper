@@ -1,34 +1,33 @@
 <template>
 	<view class="homeLayout pageBg">
-		
+
 		<custom-nav-bar title="推荐"></custom-nav-bar>
 
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#FFF" autoplay circular>
-				<swiper-item v-for="item in 3">
-					<image src="../../common/images/banner1.jpg" mode="aspectFill"></image>
+				<swiper-item v-for="item in bannerList" :key=item._id>
+					<image :src="item.picurl" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 
 		<view class="notice">
 			<view class="left">
-				<uni-icons type="sound-filled" size="20" ></uni-icons>
+				<uni-icons type="sound-filled" size="20"></uni-icons>
 				<text class="text">公告</text>
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="3000" duration="600" circular>
-					<swiper-item >
+					<swiper-item>
 						<navigator url="/pages/notice/detail">欢迎关注“浩阳说”公众号</navigator>
 					</swiper-item>
-					<swiper-item >
+					<swiper-item>
 						<navigator url="/pages/notice/detail">欢迎投稿至:354369716@qq.com</navigator>
 					</swiper-item>
-					<swiper-item >今日更新</swiper-item>
 				</swiper>
 			</view>
 			<view class="right">
-				<uni-icons type="right" size="16" ></uni-icons>
+				<uni-icons type="right" size="16"></uni-icons>
 			</view>
 		</view>
 
@@ -47,8 +46,8 @@
 
 			<view class="content">
 				<scroll-view scroll-x="">
-					<view class="box" v-for="item in 8" @click="goPreview">
-						<image src="../../common/images/preview_small.webp" mode="aspectFill">
+					<view class="box" v-for="item in randomList" :key=item._id @click="goPreview">
+						<image :src="item.smallPicurl" mode="aspectFill">
 						</image>
 					</view>
 				</scroll-view>
@@ -62,9 +61,9 @@
 					<navigator url="" class="more">More+</navigator>
 				</template>
 			</common-title>
-			
+
 			<view class="content">
-				<theme-item v-for="item in 8"></theme-item>
+				<theme-item v-for="item in classifyList" :key=item._id :item="item"></theme-item>
 				<theme-item :isMore="true"></theme-item>
 			</view>
 
@@ -74,21 +73,67 @@
 </template>
 
 <script setup>
-	const goPreview =() =>{
+	import {
+		ref
+	} from "vue";
+	import {
+		apiGetBanner,
+		apiGetDayRandom,
+		apiNoticeList,
+		apiGetClassify
+	} from "@/api/apis.js"
+
+	const goPreview = () => {
 		uni.navigateTo({
-			url:'/pages/preview/preview'
+			url: '/pages/preview/preview'
 		})
 	}
 
+	const bannerList = ref([])
+	const randomList = ref([])
+	const classifyList = ref([])
+
+	const getBanner = async () => {
+		let res = await apiGetBanner()
+		// console.log(res);
+		bannerList.value = res.data
+	}
+	getBanner()
+
+	const getDayRandom = async () => {
+		let res = await apiGetDayRandom()
+		// console.log(res);
+		randomList.value = res.data
+	}
+	getDayRandom()
+
+	const getClassify = async () => {
+		let res = await apiGetClassify({select:true})
+		// console.log(res);
+		classifyList.value = res.data
+	}
+	getClassify()
+
+	// 获取通知栏
+	const noticeList = ref([])
+	const getNotice = async () => {
+		let res = await apiNoticeList({
+			pageSize: 5
+		})
+		// console.log(res);
+		noticeList.value = res.data
+	}
+	getNotice()
 </script>
 
 <style lang="scss">
 	.homeLayout {
-		:deep(){
-			.uni-icons{
+		:deep() {
+			.uni-icons {
 				color: $brand-theme-color !important;
 			}
 		}
+
 		.banner {
 			width: 750rpx;
 			padding: 30rpx 0;
@@ -111,7 +156,7 @@
 			}
 		}
 
-		.notice {  
+		.notice {
 			display: flex;
 			width: 700rpx;
 			height: 80rpx;
@@ -132,10 +177,13 @@
 					font-size: 28rpx;
 				}
 			}
+
 			.center {
 				flex: 1;
+
 				swiper {
 					height: 100%;
+
 					&-item {
 						height: 100%;
 						font-size: 30rpx;
@@ -202,7 +250,8 @@
 				font-size: 32rpx;
 				color: #888;
 			}
-			.content{
+
+			.content {
 				margin-top: 30rpx;
 				padding: 0 30rpx;
 				display: grid;
@@ -210,6 +259,6 @@
 				grid-template-columns: repeat(3, 1fr);
 			}
 		}
-		
+
 	}
 </style>
