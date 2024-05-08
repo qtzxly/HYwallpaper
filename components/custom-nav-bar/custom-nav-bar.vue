@@ -4,10 +4,10 @@
 			<view class="statusBar" :style="{height:getStatusBarHeight() + 'px'}"></view>
 			<view class="titleBar" :style="{height:getTitleBarHeight() + 'px', marginLeft:getLeftIconLeft()+'px'}">
 				<view class="title">{{title}}</view>
-				<view class="search">
+				<navigator class="search" url="/pages/search/search">
 					<uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
 					<text class="text">搜索</text>
-				</view>
+				</navigator>
 			</view>
 		</view>
 		

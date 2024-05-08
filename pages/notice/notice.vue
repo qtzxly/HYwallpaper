@@ -1,13 +1,7 @@
 <template>
-	<view class="noticeLayout">
-		xxxx
-	</view>
+  <view class="noticeLayout"> xxxx </view>
 </template>
 
-<script setup>
-	
-</script>
+<script setup></script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

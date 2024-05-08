@@ -53,3 +53,33 @@ export function apiWriteDownload(data={}) {
 	})
 }
 
+export function apiDetailWall(data={}) {
+	return request({
+		url:"/detailWall",
+		data
+	})
+}
+
+export function apiUserInfo(data={}) {
+	return request({
+		url:"/userInfo",
+		data
+	})
+}
+
+
+
+export function apiGetHistoryList(data={}) {
+	return request({
+		url:"/userWallList",
+		data
+	})
+}
+
+
+export function apiSearchData(data={}) {
+	return request({
+		url:"/searchWall",
+		data
+	})
+}

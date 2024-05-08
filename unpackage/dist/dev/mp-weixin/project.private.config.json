@@ -34,6 +34,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/search/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

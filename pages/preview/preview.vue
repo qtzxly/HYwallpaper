@@ -26,7 +26,7 @@
       <view class="date">
         <uni-dateformat :date="new Date()" format="MM月dd日" />
       </view>
-      <view  class="footer" >
+      <view class="footer">
         <view class="box" @click="clickInfo">
           <uni-icons type="info" size="23"></uni-icons>
           <view class="text">信息</view>
@@ -98,9 +98,12 @@
             <view class="row">
               <view class="label">标签：</view>
               <view class="value tabs">
-                <view class="tab" v-for="item in currentInfo.tabs" :key=item>{{
-                  item
-                }}</view>
+                <view
+                  class="tab"
+                  v-for="item in currentInfo.tabs"
+                  :key="item"
+                  >{{ item }}</view
+                >
               </view>
             </view>
 
@@ -108,6 +111,8 @@
               声明：本图片来源于用户投稿，非商业使用，用于免费学习交流，如果侵犯了您的权益，您可以拷贝壁纸ID，并举报至邮箱：354369716@qq.com
               ，管理将删除对应壁纸，维护您的权益。
             </view>
+						
+						<view class="safe-area-inset-bottom"></view>
           </view>
         </scroll-view>
       </view>
@@ -154,10 +159,35 @@
 import { ref } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { getStatusBarHeight } from '@/utils/system.js'
-import { apiGetSetupScore, apiWriteDownload } from '@/api/apis.js'
+import { apiDetailWall, apiGetSetupScore, apiWriteDownload } from '@/api/apis.js'
+
+import { onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'
+// 分享
+onShareAppMessage((e) => {
+  return {
+    title: '浩阳壁纸-' ,
+    path: '/pages/preview/preview?id=' + currentId.value + "&type=share"
+  }
+})
+onShareTimeline((e) => {
+  return {
+    title: '浩阳壁纸-' ,
+    query: 'id='+ currentId.value + "&type=share"
+  }
+})
+
 
 const goBack = () => {
-  uni.navigateBack()
+  uni.navigateBack({
+		success:()=>{
+			
+		},
+		fail:(err)=>{
+			uni.reLaunch({
+				url:"/pages/index/index"
+			})
+		}
+	})
 }
 
 // 下载
@@ -249,8 +279,6 @@ const clickDownload = async () => {
   // #endif
 }
 
-
-
 // console.log('getStatusBarHeight',getStatusBarHeight());
 // 处理详情，替换成大图
 const classList = ref([])
@@ -268,8 +296,17 @@ const currentId = ref(null)
 const currentIndex = ref(0)
 const currentInfo = ref(null)
 const readImgs = ref([])
-onLoad((e) => {
+onLoad(async(e) => {
   currentId.value = e.id
+	if(e.type=='share'){
+	 let res = await apiDetailWall({id: currentId.value})
+	 classList.value = res.data.map((item) => {
+			return {
+				...item,
+				picurl: item.smallPicurl.replace('_small.webp', '.jpg')
+			}
+		})
+	}
   currentIndex.value = classList.value.findIndex(
     (item) => item._id == currentId.value
   )

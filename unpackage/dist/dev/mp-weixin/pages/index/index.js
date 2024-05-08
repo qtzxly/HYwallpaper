@@ -21,9 +21,22 @@ if (!Math) {
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const goPreview = () => {
+    common_vendor.onShareAppMessage((e) => {
+      return {
+        title: "浩阳壁纸,好看的壁纸",
+        path: "/pages/index/index"
+      };
+    });
+    common_vendor.onShareTimeline((e) => {
+      return {
+        title: "浩阳壁纸,好看的壁纸"
+        // imageUrl:bannerList.value[0].picurl
+      };
+    });
+    const goPreview = (id) => {
+      common_vendor.index.setStorageSync("storgClassList", randomList.value);
       common_vendor.index.navigateTo({
-        url: "/pages/preview/preview"
+        url: "/pages/preview/preview?id=" + id
       });
     };
     const bannerList = common_vendor.ref([]);
@@ -58,10 +71,18 @@ const _sfc_main = {
           title: "推荐"
         }),
         b: common_vendor.f(bannerList.value, (item, k0, i0) => {
-          return {
-            a: item.picurl,
-            b: item._id
-          };
+          return common_vendor.e({
+            a: item.target == "miniProgram"
+          }, item.target == "miniProgram" ? {
+            b: item.picurl,
+            c: item.appid,
+            d: item.url
+          } : {
+            e: item.picurl,
+            f: `/pages/classlist/classlist?${item.url}`
+          }, {
+            g: item._id
+          });
         }),
         c: common_vendor.p({
           type: "sound-filled",
@@ -83,7 +104,7 @@ const _sfc_main = {
           return {
             a: item.smallPicurl,
             b: item._id,
-            c: common_vendor.o(goPreview, item._id)
+            c: common_vendor.o(($event) => goPreview(item._id), item._id)
           };
         }),
         h: common_vendor.f(classifyList.value, (item, k0, i0) => {
@@ -103,4 +124,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "C:/qtzxly_github/HYwallpaper/pages/index/index.vue"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);
