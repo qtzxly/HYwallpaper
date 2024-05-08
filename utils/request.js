@@ -18,7 +18,7 @@ export function request(config = {}) {
       		resolve(res.data)
       	} else if (res.data.errCode === 400) {
 					uni.showModal({
-						title: 'ERROR',
+						title: '错误提示',
 						content: res.data.errMsg,
 						showCancel:false
 					})
