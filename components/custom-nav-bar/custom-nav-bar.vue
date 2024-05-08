@@ -1,7 +1,7 @@
 <template>
 	<view class="layout">
 		<view class="navbar">
-			<view class="statusBar" :style="{height:getStstusBarHeight() + 'px'}"></view>
+			<view class="statusBar" :style="{height:getStatusBarHeight() + 'px'}"></view>
 			<view class="titleBar" :style="{height:getTitleBarHeight() + 'px', marginLeft:getLeftIconLeft()+'px'}">
 				<view class="title">{{title}}</view>
 				<view class="search">
@@ -11,12 +11,12 @@
 			</view>
 		</view>
 		
-		<view class="fill" :style="{height:getStstusBarHeight()+getTitleBarHeight() + 'px'}"></view>
+		<view class="fill" :style="{height:getStatusBarHeight()+getTitleBarHeight() + 'px'}"></view>
 	</view>
 </template>
 
 <script setup>
-	import {getStstusBarHeight,getTitleBarHeight,getLeftIconLeft} from "@/utils/system.js"
+	import {getStatusBarHeight,getTitleBarHeight,getLeftIconLeft} from "@/utils/system.js"
 	
 	defineProps({
 		title:{
